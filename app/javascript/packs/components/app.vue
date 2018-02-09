@@ -1,14 +1,28 @@
 <template>
   <div id="app">
     <p>{{ message }}</p>
+    <button @click="runAjax">Run AJAX</button>
   </div>
 </template>
 
 <script>
+import Rails from 'rails-ujs';
+
 export default {
-  data: function () {
+  data: () => {
     return {
       message: "Hello Vue!"
+    };
+  },
+  methods: {
+    runAjax () {
+      Rails.ajax({
+        url: '/home/',
+        type: 'GET',
+        success: (data) => {
+          this.message = data.a;
+        }
+      });
     }
   }
 }
