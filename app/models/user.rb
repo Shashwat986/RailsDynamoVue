@@ -9,4 +9,6 @@ class User
   global_secondary_index hash_key: :username
 
   validates_presence_of :username
+
+  has_many :transactions
 end
