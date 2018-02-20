@@ -1,7 +1,7 @@
 <template>
   <div id="app">
     <p>{{ message }}</p>
-    <button @click="runAjax">Run AJAX</button>
+    <button @click="runAjax" class="btn btn-large btn-primary">Run AJAX</button>
   </div>
 </template>
 
@@ -20,7 +20,7 @@ export default {
         url: '/home/',
         type: 'GET',
         success: (data) => {
-          this.message = data.a;
+          this.message += data.a;
         }
       });
     }
