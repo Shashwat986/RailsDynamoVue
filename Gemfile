@@ -42,3 +42,7 @@ gem 'dynamoid', '~> 2'
 gem 'dotenv-rails'
 
 gem 'bootstrap', '~> 4.0.0'
+
+gem 'devise'
+
+gem 'activerecord-nulldb-adapter'
