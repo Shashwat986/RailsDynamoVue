@@ -3,9 +3,7 @@ class HomeController < ApplicationController
     puts "Hello World"
   end
 
-  def index
-    render json: {
-      a: 1
-    }
+  def e404
+    raise ActionController::RoutingError.new('Not Found')
   end
 end
