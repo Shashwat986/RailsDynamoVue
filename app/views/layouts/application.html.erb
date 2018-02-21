@@ -8,12 +8,15 @@
   </head>
 
   <body>
-    <p class="notice"><%= notice %></p>
-    <p class="alert"><%= alert %></p>
-    <!-- TODO -->
+    <% if notice %>
+      <div class="alert alert-success fixed-top notice-alert"><%= notice %></div>
+    <% elsif alert %>
+      <div class="alert alert-danger fixed-top notice-alert"><%= alert %></div>
+    <% end %>
+
     <%= yield %>
 
-    <%= javascript_pack_tag 'main' %>
+    <%= javascript_pack_tag 'application' %>
     <%= javascript_pack_tag params[:controller] %>
     <%= stylesheet_pack_tag params[:controller] %>
   </body>

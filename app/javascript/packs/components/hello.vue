@@ -1,6 +1,10 @@
 <template>
-  <div>
-    Hello World
+  <div class="container">
+    <div class="row">
+      <div class="col-12">
+      Hello World
+      </div>
+    </div>
   </div>
 </template>
 

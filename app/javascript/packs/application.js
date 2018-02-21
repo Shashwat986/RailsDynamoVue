@@ -9,3 +9,11 @@
 
 import Rails from 'rails-ujs';
 Rails.start();
+
+document.addEventListener('DOMContentLoaded', () => {
+  [].forEach.call(document.getElementsByClassName("notice-alert"), (el) => {
+    setTimeout(() => {
+      el.classList.add('d-none');
+    }, 2000);
+  });
+});
