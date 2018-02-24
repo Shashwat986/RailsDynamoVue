@@ -46,3 +46,4 @@ gem 'bootstrap', '~> 4.0.0'
 gem 'devise'
 
 gem 'activerecord-nulldb-adapter'
+gem 'orm_adapter-dynamoid'

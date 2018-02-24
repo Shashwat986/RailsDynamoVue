@@ -43,4 +43,16 @@ class User < ApplicationRecord
   validates :sign_in_count, presence: true
 
   has_many :transactions
+
+  # To allow logins through username or email
+  attr_accessor :login
+
+  def self.find_for_database_authentication(warden_conditions)
+    login = warden_conditions.delete(:login)
+
+    byebug
+
+    self.where(username: login).where(warden_conditions).first ||
+      self.where(email: login).where(warden_conditions).first
+  end
 end
