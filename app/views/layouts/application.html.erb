@@ -17,7 +17,12 @@
     <%= yield %>
 
     <%= javascript_pack_tag 'application' %>
-    <%= javascript_pack_tag params[:controller] %>
-    <%= stylesheet_pack_tag params[:controller] %>
+
+    <% begin %>
+      <%= javascript_pack_tag params[:controller] %>
+      <%= stylesheet_pack_tag params[:controller] %>
+    <% rescue Webpacker::Manifest::MissingEntryError %>
+      <% # Required for files that don't exist %>
+    <% end %>
   </body>
 </html>

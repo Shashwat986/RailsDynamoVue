@@ -8,10 +8,10 @@
 
       <div :class="['navbar-collapse', {show: toggleNav}, 'collapse']" id="navbarSupportedContent">
         <ul class="navbar-nav mr-auto">
-          <li :class="['nav-item', {active: (activeTab == 'home')}]">
+          <li :class="getNavClass('home')">
             <router-link class="nav-link" to="/">Home</router-link>
           </li>
-          <li :class="['nav-item', {active: (activeTab == 'market')}]">
+          <li :class="getNavClass('market')">
             <router-link class="nav-link" to="/foo">Marketplace</router-link>
           </li>
         </ul>
@@ -29,5 +29,10 @@ export default {
       toggleNav: false
     };
   },
+  methods: {
+    getNavClass (tabName) {
+      return ['nav-item', { active: (this.activeTab == tabName) }];
+    }
+  }
 };
 </script>

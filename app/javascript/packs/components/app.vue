@@ -24,12 +24,8 @@ export default {
   },
   methods: {
     runAjax () {
-      Rails.ajax({
-        url: '/api/',
-        type: 'GET',
-        success: (data) => {
-          this.message += data.a;
-        }
+      this.$store.dispatch('runAjax').then((d) => {
+        this.message += d.a;
       });
     },
     runAjaxPost () {

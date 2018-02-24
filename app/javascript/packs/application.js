@@ -10,6 +10,22 @@
 import Rails from 'rails-ujs';
 Rails.start();
 
+window.promisedAjax = (params) => {
+  return new Promise((resolve, reject) => {
+    Rails.ajax({...params, ...{
+        success: (data) => {
+          if (params.success) params.success(data);
+          resolve(data);
+        },
+        error: (resp) => {
+          if (params.error) params.error(resp);
+          reject(resp);
+        }
+      }
+    });
+  });
+};
+
 document.addEventListener('DOMContentLoaded', () => {
   [].forEach.call(document.getElementsByClassName("notice-alert"), (el) => {
     setTimeout(() => {
