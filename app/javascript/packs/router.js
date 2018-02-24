@@ -8,11 +8,13 @@ import e404 from './components/e404.vue';
 const routes = [
   {
     path: '',
-    component: App
+    component: App,
+    meta: {tab: "home"}
   },
   {
     path: '/foo',
-    component: Hello
+    component: Hello,
+    meta: {tab: "market"}
   },
   {
     path: '/*',

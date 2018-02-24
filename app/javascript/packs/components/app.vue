@@ -1,5 +1,5 @@
 <template>
-  <div id="app">
+  <div id="app" class="container">
     <p>{{ message }}</p>
     <button @click="runAjax" class="btn btn-large btn-primary">Run AJAX</button>
     <button @click="runAjaxPost" class="btn btn-large btn-primary">Run AJAX Post</button>
@@ -19,7 +19,6 @@ export default {
   },
   computed: {
     path () {
-      console.log(this.$route);
       return this.$route.path;
     }
   },

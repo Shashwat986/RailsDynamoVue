@@ -1,10 +1,13 @@
 import Vue from 'vue/dist/vue.esm';
-import App from './components/app.vue';
 import router from './router'
+import Main from './components/main.vue';
 
 document.addEventListener('DOMContentLoaded', () => {
   new Vue({
     el: "#home",
-    router
+    router,
+    components: {
+      mainEle: Main
+    }
   });
 });
