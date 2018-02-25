@@ -1,12 +1,12 @@
 <template>
   <div class="container">
-    <nav class="navbar navbar-expand-sm navbar-light bg-light">
+    <nav class="navbar navbar-expand-md navbar-light bg-light">
       <a class="navbar-brand" href="#">KriaCoin</a>
       <button class="navbar-toggler" type="button" aria-expanded="false" aria-label="Toggle navigation" @click="toggleNav = !toggleNav">
         <span class="navbar-toggler-icon"></span>
       </button>
 
-      <div :class="['navbar-collapse', {show: toggleNav}, 'collapse']" id="navbarSupportedContent">
+      <div :class="['navbar-collapse', {show: toggleNav}, 'collapse']">
         <ul class="navbar-nav mr-auto">
           <li :class="getNavClass('home')">
             <router-link class="nav-link" to="/">Home</router-link>
@@ -15,7 +15,13 @@
             <router-link class="nav-link" to="/foo">Marketplace</router-link>
           </li>
         </ul>
-        <button class="btn btn-outline-success my-2 my-sm-0" type="button">Search</button>
+        <template v-if="user">
+          <span class="nav-text mr-2">
+            <a href="/users/edit">{{user.username}}</a>
+          </span>
+          <a class="btn btn-outline-danger" href="/users/sign_out">Logout</a>
+        </template>
+        <a v-else class="btn btn-outline-success mr-2" href="/users/sign_in">Login</a>
       </div>
     </nav>
   </div>
@@ -23,7 +29,7 @@
 
 <script>
 export default {
-  props: ['activeTab'],
+  props: ['activeTab', 'user'],
   data: () => {
     return {
       toggleNav: false

@@ -11,7 +11,7 @@ class User < ApplicationRecord
          :confirmable, :timeoutable
 
   field :username, :string
-  field :verified, :boolean, store_as_native_boolean: true
+  field :verified, :boolean, store_as_native_boolean: true, default: false
   field :verified_at, :datetime
 
   # Required for Devise
@@ -50,9 +50,13 @@ class User < ApplicationRecord
   def self.find_for_database_authentication(warden_conditions)
     login = warden_conditions.delete(:login)
 
-    byebug
-
     self.where(username: login).where(warden_conditions).first ||
       self.where(email: login).where(warden_conditions).first
+  end
+  # End
+
+  # What user properties should go as props to the VueJS instance
+  def to_props
+    as_json.slice(:username, :email, :verified).to_json
   end
 end

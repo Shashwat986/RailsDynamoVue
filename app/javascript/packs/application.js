@@ -27,9 +27,10 @@ window.promisedAjax = (params) => {
 };
 
 document.addEventListener('DOMContentLoaded', () => {
+  // Hiding notices after they're shown
   [].forEach.call(document.getElementsByClassName("notice-alert"), (el) => {
     setTimeout(() => {
       el.classList.add('d-none');
-    }, 2000);
+    }, 800);
   });
 });
