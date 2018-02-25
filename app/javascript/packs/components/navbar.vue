@@ -19,7 +19,7 @@
           <span class="nav-text mr-2">
             <a href="/users/edit">{{user.username}}</a>
           </span>
-          <a class="btn btn-outline-danger" href="/users/sign_out">Logout</a>
+          <a class="btn btn-outline-danger" href="/users/sign_out" data-method="delete">Logout</a>
         </template>
         <a v-else class="btn btn-outline-success mr-2" href="/users/sign_in">Login</a>
       </div>
