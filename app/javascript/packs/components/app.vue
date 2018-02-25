@@ -3,7 +3,7 @@
     <p>{{ message }}</p>
     <button @click="runAjax" class="btn btn-large btn-primary">Run AJAX</button>
     <button @click="runAjaxPost" class="btn btn-large btn-primary">Run AJAX Post</button>
-    <button @click="$store.commit('showSpinner', !$store.state.showSpinner)">Show Spinner</button>
+    <button @click="$store.commit('loading', !$store.state.loading)" class="btn btn-primary">Show Spinner</button>
     <router-link to="/foo">asdf</router-link>
     <p>{{ path }}</p>
   </div>

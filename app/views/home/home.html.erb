@@ -1,7 +1,7 @@
 <div id="home">
   <main-ele
   <% if user_signed_in? %>
-    user-json="<%= current_user.to_props %>"
+    user-json="<%= current_user.to_vue %>"
   <% end %>
   ></main-ele>
 </div>

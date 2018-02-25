@@ -21,5 +21,8 @@ export function fetchAPI (context, ajaxObject) {
   return promisedAjax(ajaxObject).then((data) => {
     context.commit('loading', false);
     return data;
+  }, (resp) => {
+    context.commit('loading', false);
+    return Promise.reject(resp);
   });
 }

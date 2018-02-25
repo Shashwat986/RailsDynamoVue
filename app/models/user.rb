@@ -55,8 +55,8 @@ class User < ApplicationRecord
   end
   # End
 
-  # What user properties should go as props to the VueJS instance
-  def to_props
+  # What user properties should go to the VueJS instance
+  def to_vue
     as_json.slice(:username, :email, :verified).to_json
   end
 end
