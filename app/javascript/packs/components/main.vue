@@ -1,9 +1,10 @@
 <template>
-  <div id="home" class="container-fluid">
+  <div class="container-fluid">
     <div class="row">
       <navbar :active-tab="tab" :user="user"></navbar>
     </div>
     <div class="row">
+      <spinner v-if="showSpinner"></spinner>
       <router-view></router-view>
     </div>
   </div>
@@ -11,22 +12,25 @@
 
 <script>
 import Navbar from './navbar.vue';
+import Spinner from './spinner.vue';
 export default {
   props: ['user-json'],
   components: {
-    navbar: Navbar
+    navbar: Navbar,
+    spinner: Spinner
   },
   computed: {
     tab () {
       return this.$route.meta.tab;
     },
     user () {
-      if (this.userJson) {
-        console.log(JSON.parse(this.userJson))
+      if (this.userJson)
         return JSON.parse(this.userJson);
-      }
       else
         return null;
+    },
+    showSpinner () {
+      return this.$store.state.loading;
     }
   }
 };

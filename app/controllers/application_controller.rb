@@ -10,4 +10,10 @@ class ApplicationController < ActionController::Base
     devise_parameter_sanitizer.permit :sign_up, keys: added_attrs
     devise_parameter_sanitizer.permit :account_update, keys: added_attrs
   end
+
+  def check_login
+    if !user_signed_in?
+      head 404
+    end
+  end
 end

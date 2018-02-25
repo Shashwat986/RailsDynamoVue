@@ -4,6 +4,10 @@ Rails.application.routes.draw do
 
   resources :api, only: [:index, :create]
 
+  scope '/api' do
+    resources :users, only: [:index]
+  end
+
   get '/404', to: 'home#e404'
 
   # format: false so that any extensions aren't treated as Content-Type and entire route is sent to Vue
