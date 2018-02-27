@@ -10,7 +10,7 @@
 </template>
 
 <script>
-import Rails from 'rails-ujs';
+import { axios } from '../utils/ajax';
 
 export default {
   data: () => {
@@ -25,17 +25,16 @@ export default {
   },
   methods: {
     runAjax () {
-      this.$store.dispatch('runAjax').then((d) => {
-        this.message += d.a;
+      this.$store.dispatch('runAjax').then(({data}) => {
+        this.message += data.a;
       });
     },
     runAjaxPost () {
-      Rails.ajax({
+      axios({
         url: '/api/',
-        type: 'POST',
-        success: (data) => {
-          this.message += data.a;
-        }
+        method: 'POST'
+      }).then(({data}) => {
+        this.message += data.a;
       });
     }
   }

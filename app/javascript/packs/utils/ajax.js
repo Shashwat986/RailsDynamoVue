@@ -1,24 +1,15 @@
-import Rails from 'rails-ujs';
+import * as _axios from 'axios';
 
-export function promisedAjax (params) {
-  return new Promise((resolve, reject) => {
-    Rails.ajax({...params, ...{
-        success: (data) => {
-          if (params.success) params.success(data);
-          resolve(data);
-        },
-        error: (resp) => {
-          if (params.error) params.error(resp);
-          reject(resp);
-        }
-      }
-    });
-  });
-};
+export function axios() {
+  // Adding CSRF Token to axios
+  _axios.defaults.headers.common['X-CSRF-Token'] = document.querySelector("meta[name=csrf-token]").content;
+
+  return _axios.apply(null, arguments);
+}
 
 export function fetchAPI (context, ajaxObject) {
   context.commit('loading', true);
-  return promisedAjax(ajaxObject).then((data) => {
+  return axios(ajaxObject).then((data) => {
     context.commit('loading', false);
     return data;
   }, (resp) => {
