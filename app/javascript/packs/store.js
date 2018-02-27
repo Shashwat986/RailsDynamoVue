@@ -29,7 +29,8 @@ const store = new Vuex.Store({
     fetchData (context, obj) {
       let req_obj = {
         attr: null,
-        method: "GET"
+        method: "GET",
+        default_val: null
       };
 
       if (typeof obj === "string") {
@@ -41,7 +42,9 @@ const store = new Vuex.Store({
       }
 
       const attr = req_obj.attr;
+      const default_val = req_obj.default_val;
       req_obj.attr = undefined;
+      req_obj.default_val = undefined;
 
       // If URL is provided in request object, use that, else use default mapping
       req_obj.url = req_obj.url || getUrl[attr];
@@ -53,7 +56,7 @@ const store = new Vuex.Store({
       return fetchAPI(context, req_obj).then(({ data }) => {
         context.commit(attr, data);
       }, (err) => {
-        context.commit(attr, null);
+        context.commit(attr, default_val);
       });
     },
     fetchDatas (context, arr) {
