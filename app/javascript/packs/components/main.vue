@@ -19,6 +19,11 @@ export default {
     navbar: Navbar,
     spinner: Spinner
   },
+  created () {
+    if (this.userJson) {
+      this.$store.commit('user', JSON.parse(this.userJson));
+    }
+  },
   computed: {
     tab () {
       return this.$route.meta.tab;
