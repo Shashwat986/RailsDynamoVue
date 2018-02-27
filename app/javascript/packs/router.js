@@ -2,7 +2,7 @@ import Vue from 'vue/dist/vue.esm';
 import VueRouter from 'vue-router';
 
 import App from './components/app.vue';
-import Hello from './components/hello.vue';
+import Foo from './components/foo.vue';
 import e404 from './components/e404.vue';
 
 const routes = [
@@ -13,7 +13,7 @@ const routes = [
   },
   {
     path: '/foo',
-    component: Hello,
+    component: Foo,
     meta: {tab: "market"}
   },
   {
