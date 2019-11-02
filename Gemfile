@@ -41,7 +41,7 @@ gem 'aws-sdk', '~> 2' # Required for dynamoid
 gem 'dynamoid', '~> 2'
 gem 'dotenv-rails'
 
-gem 'bootstrap', '~> 4.0.0'
+gem 'bootstrap', '~> 4.3.1'
 
 gem 'devise'
 
